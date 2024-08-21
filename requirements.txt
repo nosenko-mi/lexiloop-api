@@ -1,0 +1,7 @@
+nltk==3.8.1
+gensim==4.3.3
+pattern==3.6
+fastapi[standard]==0.112.1
+sqlalchemy==2.0.32
+EbookLib==0.18
+beautifulsoup4==4.12.3
