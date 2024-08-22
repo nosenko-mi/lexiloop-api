@@ -1,0 +1,7 @@
+services:
+  lexiloop-api:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - "./data:/lexiloop/data"
