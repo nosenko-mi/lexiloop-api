@@ -3,4 +3,6 @@
 source
 sql_querries
 data
-__pychache__
+app\api\__pycache__
+app\api\routers\__pycache__
+app\db\__pycache__
