@@ -11,6 +11,7 @@ class SimpleAnswerCreate(SimpleAnswerBase):
 
 
 class SimpleAnswer(SimpleAnswerBase):
+    id: int
     quiz_id: int
 
     class Config:
