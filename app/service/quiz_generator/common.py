@@ -22,9 +22,10 @@ class Answer:
 
 class Quiz:
 
-    def __init__(self) -> None:
+    def __init__(self, type: int = 1) -> None:
         self.text = None
         self.answers: list[Answer] = []
+        self.type: int = type
 
     def set_question(self, text: str) -> None:
         self.text = text
@@ -54,7 +55,7 @@ class Quiz:
         return res
     
     def to_create_schema(self) -> tuple[schemas.SimpleQuizCreate, list[schemas.SimpleAnswerCreate]]:
-        quiz = schemas.SimpleQuizCreate(text=self.text)
+        quiz = schemas.SimpleQuizCreate(text=self.text, type_id=self.type)
         answers = [schemas.SimpleAnswerCreate(text=a.text, is_correct=a.is_correct) for a in self.answers]
         return (quiz, answers)
 
@@ -86,6 +87,9 @@ class QuizBuilder:
 
     def add_answer(self, answer: Answer):
         self.quiz.add_answer(answer)
+
+    def set_type(self, type: int):
+        self.quiz.type = type
 
     def build(self) -> Quiz:
         quiz = self.quiz

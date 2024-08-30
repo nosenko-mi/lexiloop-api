@@ -7,8 +7,8 @@ from app.service.quiz_generator.common import Quiz, QuizBuilder
 from app.service.quiz_generator.generator import QuizGenerator
 
 router = APIRouter(
-    prefix="/api/quizzes",
-    tags=["quizzes"]
+    prefix="/api/quiz",
+    tags=["quiz"]
 )
 
 

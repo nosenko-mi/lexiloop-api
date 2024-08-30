@@ -38,6 +38,7 @@ class QuizGenerator:
         self.builder.add_answer(Answer(text=extracted[1][0], is_correct=True))
         for a in new_answers:
             self.builder.add_answer(Answer(text=a, is_correct=False))
+        self.builder.set_type(1)
         quiz = self.builder.build()
 
         return quiz

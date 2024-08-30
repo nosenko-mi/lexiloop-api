@@ -36,6 +36,7 @@ class SequenceAnswer(SequenceAnswerBase):
 
 class SimpleQuizBase(BaseModel):
     text: str
+    type_id: int
 
 
 class SimpleQuizCreate(SimpleQuizBase):
@@ -52,6 +53,7 @@ class SimpleQuiz(SimpleQuizBase):
 
 class SequenceQuizBase(BaseModel):
     text: str
+    type_id: int
 
 
 class SequenceQuizCreate(SequenceQuizBase):
@@ -69,6 +71,7 @@ class SequenceQuiz(SequenceQuizBase):
 class VoiceQuizBase(BaseModel):
     text: str
     expected_text: str
+    type_id: int
 
 
 class VoiceQuizCreate(VoiceQuizBase):

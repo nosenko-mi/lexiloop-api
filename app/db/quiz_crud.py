@@ -19,7 +19,7 @@ def get_simple_quizzes(db: Session, skip: int = 0, limit: int = 100) -> list[mod
 
 
 def create_simple_quiz(db: Session, quiz: schemas.SimpleQuizCreate):
-    db_simple_quiz = models.SimpleQuiz(text=quiz.text)
+    db_simple_quiz = models.SimpleQuiz(text=quiz.text, type_id=quiz.type_id)
     db.add(db_simple_quiz)
     db.commit()
     db.refresh(db_simple_quiz)
@@ -42,7 +42,6 @@ def create_complete_simple_quiz(db: Session, quiz: schemas.SimpleQuizCreate, ans
     db_quiz = create_simple_quiz(db, quiz)
     if not db_quiz:
         return
-    
     db_answers = []
     for answer in answers:
         db_answers.append(create_quiz_answer(db, answer, db_quiz.id))

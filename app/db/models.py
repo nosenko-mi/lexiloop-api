@@ -24,10 +24,18 @@ class TextFeature(Base):
     dataset = relationship("Dataset", back_populates="entries")
 
 
+class QuizType(Base):
+    __tablename__ = "quiz_type"
+
+    id = Column(Integer, primary_key=True)
+    type_text = Column(String)
+
+
 class SimpleQuiz(Base):
     __tablename__ = "simple_quizzes"
 
     id = Column(Integer, primary_key=True)
+    type_id = Column(Integer, ForeignKey("quiz_type.id"))
     text = Column(String)
 
     answers = relationship("SimpleAnswer", back_populates="quiz")
@@ -37,6 +45,7 @@ class SequenceQuiz(Base):
     __tablename__ = "sequence_quizzes"
 
     id = Column(Integer, primary_key=True)
+    type_id = Column(Integer, ForeignKey("quiz_type.id"))
     text = Column(String)
 
     answers = relationship("SequenceAnswer", back_populates="quiz")
@@ -46,6 +55,7 @@ class VoiceQuiz(Base):
     __tablename__ = "voice_quizzes"
 
     id = Column(Integer, primary_key=True)
+    type_id = Column(Integer, ForeignKey("quiz_type.id"))
     text = Column(String)
     expected_text = Column(String)
 
